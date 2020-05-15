@@ -1,10 +1,11 @@
 import React from "react"
+import CustomizeHeader from './CustomizeHeader'
 
 export default function Customize (props){
     return (
         
           <form className="main__form">
-            <h2>Customize your laptop</h2>
+            <CustomizeHeader />
             {props.Features}
           </form>
     )
