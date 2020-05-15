@@ -3,8 +3,11 @@ import React, { Component } from 'react';
 // Normalizes string as a slug - a string that is safe to use
 // in both URLs and html attributes
 import slugify from 'slugify';
-
 import './App.css';
+import  Header from './components/Header'
+import Customize from './components/Customize';
+import YourCart from './components/YourCart'
+import Total from './components/Total'
 
 // This object will allow us to
 // easily convert numbers into US dollar values
@@ -15,6 +18,49 @@ const USCurrencyFormat = new Intl.NumberFormat('en-US', {
 
 class App extends Component {
   state = {
+    FEATURES: {
+      Processor: [
+        {
+          name: '17th Generation Intel Core HB (7 Core with donut spare)',
+          cost: 700
+        },
+        {
+          name: 'Professor X AMD Fire Breather with sidewinder technology',
+          cost: 1200
+        }
+      ],
+      "Operating System": [
+        {
+          name: 'Ubuntu Linux 16.04',
+          cost: 200
+        },
+        {
+          name: 'Bodhi Linux',
+          cost: 300
+        }
+      ],
+      "Video Card": [
+        {
+          name: 'Toyota Corolla 1.5v',
+          cost: 1150.98
+        },
+        {
+          name: 'Mind mild breeze 2000',
+          cost: 1345
+        }
+      ],
+      Display: [
+        {
+          name: '15.6" UHD (3840 x 2160) 60Hz Bright Lights and Knobs',
+          cost: 1500
+        },
+        {
+          name: '15.3" HGTV (3840 x 2160) Home makeover edition',
+          cost: 1400
+        },
+      ]
+    },
+
     selected: {
       Processor: {
         name: '17th Generation Intel Core HB (7 Core with donut spare)',
@@ -97,23 +143,12 @@ class App extends Component {
 
     return (
       <div className="App">
-        <header>
-          <h1>ELF Computing | Laptops</h1>
-        </header>
+        <Header />
         <main>
-          <form className="main__form">
-            <h2>Customize your laptop</h2>
-            {features}
-          </form>
+           <Customize Features={features} />
           <section className="main__summary">
-            <h2>Your cart</h2>
-            {summary}
-            <div className="summary__total">
-              <div className="summary__total__label">Total</div>
-              <div className="summary__total__value">
-                {USCurrencyFormat.format(total)}
-              </div>
-            </div>
+            <YourCart Summary ={summary} />
+            <Total Total={USCurrencyFormat.format(total)} />
           </section>
         </main>
       </div>
