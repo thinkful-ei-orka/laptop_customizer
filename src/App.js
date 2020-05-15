@@ -5,20 +5,13 @@ import React, { Component } from 'react';
 
 import './App.css';
 import  Header from './components/Header'
-import Customize from './components/Customize';
-import YourCart from './components/YourCart'
 import Total from './components/Total'
 import YourCartHeader from './components/YourCartHeader';
-import CustomizeHeader from './components/CustomizeHeader';
+
 import Features from './components/Features'
 import Summaries from './components/Summary'
 
-// This object will allow us to
-// easily convert numbers into US dollar values
-const USCurrencyFormat = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'USD'
-});
+
 
 class App extends Component {
   state = {
@@ -85,6 +78,11 @@ class App extends Component {
     }
   };
 
+  // const USCurrencyFormat = new Intl.NumberFormat('en-US', {
+  //   style: 'currency',
+  //   currency: 'USD'
+  // });
+
   updateFeature = (feature, newValue) => {
     const selected = Object.assign({}, this.state.selected);
     selected[feature] = newValue;
@@ -99,9 +97,9 @@ class App extends Component {
       <div className="App">
         <Header />
         <main>
-          <CustomizeHeader />
+          {/* <CustomizeHeader /> */}
           <Features features={this.state.FEATURES} selected={this.state.selected} 
-              updateFeature={this.updateFeature()}/>
+              updateFeature={this.updateFeature}/>
            {/* <Customize Features={features} /> */}
           <section className="main__summary">
             <YourCartHeader />
